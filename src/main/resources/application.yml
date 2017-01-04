@@ -1,0 +1,25 @@
+---
+spring:
+  application.name: Springboot-practice
+  aop.proxy-target-class: true
+  messages.basename: messages
+
+security.basic.enabled: false
+
+extension:
+  datasource:
+    default:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username:
+      password:
+      connection-timeout: 30000
+  hibernate:
+    default:
+      dialect: org.hibernate.dialect.H2Dialect
+      packagesToScan: jp.co.maxa.com.model
+      showSql: true
+      createDrop: true
+  security:
+    cors.enabled: true
+  datafixture.enabled: true
