@@ -1,35 +1,29 @@
 buildscript {
-  repositories {
-      jcenter()
-  }
-  dependencies {
-    classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE"
-  }
+    ext {
+        springBootVersion = '1.5.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
-apply plugin: 'java'
-apply plugin: 'spring-boot'
+apply plugin: "org.springframework.boot"
 
-jar {
-	baseName = 'a.sakuma'
-	version = '0.0.1-SNAPSHOT'
-}
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-def defaultEncoding = 'UTF-8'
-tasks.withType(AbstractCompile).each { it.options.encoding = defaultEncoding }
-
-javadoc {
-    options.encoding = defaultEncoding
-}
-
 repositories {
-	jcenter()
+    mavenCentral()
+    jcenter()
 }
 
 dependencies {
-	compile "org.projectlombok:lombok:1.16.8"
+    compileOnly 'org.projectlombok:lombok:1.16.14'
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-security"
     compile "org.springframework.boot:spring-boot-starter-aop"
@@ -51,8 +45,4 @@ dependencies {
     compile fileTree(dir: 'libs', includes: ['*.jar'])
     runtime "com.h2database:h2:1.4.+"
     testCompile "org.springframework.boot:spring-boot-starter-test"
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = "2.10"
 }

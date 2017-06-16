@@ -37,17 +37,17 @@ public class DataFixtures {
     }
 
     public void initializeInTx() {
-    	projectMaster("lite-manual").save(rep);
-    	projectMaster("Site Catalyst").save(rep);
-    	projectMaster("Acceptance Mark").save(rep);
+    	projectMaster("グミ", "100円", "ゼラチンの塊").save(rep);
+    	projectMaster("チョコ", "200円", "カカオの塊").save(rep);
+    	projectMaster("タバコ", "460円", "ヤニ棒").save(rep);
     }
 
     // master domain
-    public ProjectMaster projectMaster(String name) {
+    public ProjectMaster projectMaster(String name, String budget, String description) {
     	ProjectMaster m = new ProjectMaster();
         m.setName(name);
-        m.setBudget(name);
-        m.setDescription(name);
+        m.setBudget(budget);
+        m.setDescription(description);
         return m;
     }
 }
